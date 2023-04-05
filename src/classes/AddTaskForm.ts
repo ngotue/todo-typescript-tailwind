@@ -1,10 +1,18 @@
-export enum STATUS {CONCEPT , READY , DOING , COMPLETED}
-
-
-
-// export type Status = "CONCEPT" | "READY" | "DOING" | "COMPLETED"
+import { Modal } from "./Modal"
+import { Task } from "./Task"
 
 export class AddTaskForm {
-    constructor(id: number = Math.random()*250, private title: string, private desc: string, private status: STATUS){}
+    constructor(private darkenComponent: HTMLElement){
+        this.openModal(this.darkenComponent)
+    }
+
+    private openModal(darkenComponent: HTMLElement) {
+        darkenComponent.classList.add('brightness-50')
+        darkenComponent.append(Modal.getModal())
+    }
+
+    addTask(task: Task) {
+        
+    }
 }
 

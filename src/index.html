@@ -8,19 +8,19 @@
 </head>
 
 <body>
-    <main class="container min-h-fit py-4">
-        <header class="w-full"><h1 class="text-3xl underline">TODO</h1></header>
-        <section class="w-full columns-4 gap-0 step-container min-h-fit pt-4">
-            <article class="task-status min-h-screen bg-fuchsia-100">
+    <main class="container min-h-screen py-4 flex flex-wrap flex-col">
+        <header class="w-full flex flex-wrap justify-between"><h1 class="text-3xl underline">TODO</h1><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add</button></header>
+        <section class="w-full step-container min-h-fit pt-4 flex flex-wrap grow">
+            <article class="bg-fuchsia-100 hover:bg-fuchsia-200 flex-1">
                 <h1 class="text-xl text-center">CONCEPT</h1>
             </article>
-            <article class="task-status min-h-screen border-l-2 border-l-cyan-950 px-2 bg-lime-100">
+            <article class="border-l-2 border-l-cyan-950 px-2 bg-lime-100 hover:bg-lime-200 flex-1">
                 <h1 class="text-xl text-center">READY</h1>
             </article>
-            <article class="task-status min-h-screen border-l-2 border-l-cyan-950 px-2 bg-sky-100">
+            <article class="border-l-2 border-l-cyan-950 px-2 bg-sky-100 hover:bg-sky-200 flex-1">
                 <h1 class="text-xl text-center">DOING</h1>
             </article>
-            <article class="task-statu min-h-screen border-l-2 border-l-cyan-950 px-2 bg-rose-100">
+            <article class="border-l-2 border-l-cyan-950 px-2 bg-rose-100 hover:bg-rose-200 flex-1">
                 <h1 class="text-xl text-center">COMPLETED</h1>
             </article>
         </section>
