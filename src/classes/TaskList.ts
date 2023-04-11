@@ -1,22 +1,19 @@
 import { STATUS, Task } from "./Task";
-
-const itemTemplate = require('../templates/item.html').default
+import { Item } from "./Item";
 
 export class TaskList {
+
+  private container: HTMLElement
+
   constructor(private tasks: Task[], private status: STATUS) {
+    this.container = document.querySelector(`#${this.status}`)
     this.render()
   }
 
-  private render() {
-    const container = document.querySelector(`#${this.status}`) as HTMLDivElement
-    
+  render() {
     this.tasks.forEach((task) => {
-        const newItem = document.createElement('div')
-        newItem.insertAdjacentHTML('afterbegin', itemTemplate)
-        newItem.querySelector('h3')!.innerHTML = task.title
-        newItem.querySelector('p')!.innerHTML = task.desc
-        container.appendChild(newItem)
-        console.log(newItem.innerHTML)
+        const newItem = new Item(task)
+        newItem.render(this.container)
     })
   }
 }

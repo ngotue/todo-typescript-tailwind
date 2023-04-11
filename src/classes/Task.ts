@@ -6,10 +6,10 @@ export enum STATUS {
 }
 
 export class Task {
-  readonly id: number = Math.floor(Math.random() * 250);
   constructor(
-    public title: string,
-    public desc: string,
-    public status: STATUS
+    public title: string = '',
+    public desc: string = '',
+    public status: STATUS = STATUS.CONCEPT,
+    public readonly id: number = Math.floor(Math.random() * 250)
   ) {}
 }

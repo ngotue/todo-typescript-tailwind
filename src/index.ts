@@ -5,12 +5,12 @@ import {TaskList} from './classes/TaskList'
 
 const button = document.querySelector('button')
 
-const modal = new Modal('#modal-container')
 
 button.addEventListener('click', () => {
+    const modal = new Modal('#modal-container')
     modal.openModal()
 })
 
 Object.values(STATUS).forEach(value => {
-    new TaskList(DataBase.getFromStorage(value) || [], value)
+    new TaskList(DataBase.get(value) || [], value)
 })
