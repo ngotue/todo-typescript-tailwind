@@ -18,7 +18,7 @@ const config = {
   devServer: {
     open: true,
     host: "localhost",
-    port: "6969",
+    port: "8080",
     static: path.resolve(__dirname, "dist"),
     watchFiles: ["dist/**/*"],
   },
@@ -48,6 +48,11 @@ const config = {
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset",
+      },
+      {
+        test: /\.html$/i,
+        exclude: /node_modules/,
+        use: "raw-loader",
       },
 
       // Add your rules for custom modules here

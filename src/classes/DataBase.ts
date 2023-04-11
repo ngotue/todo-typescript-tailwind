@@ -1,28 +1,28 @@
 import { STATUS, Task } from "./Task"
 
 export class DataBase {
-    private instance: DataBase
     private static storage: Storage = localStorage
 
     private constructor(){}
 
-    getDataBase(): DataBase {
-        if(!this.instance) {
-            this.instance = new DataBase()
+    static getFromStorage(status: STATUS): Task[] | null{
+        const datas = DataBase.storage.getItem(status)
+        return datas ? JSON.parse(datas) : null
+    }
+
+    static addToStorage(task: Task) {
+        const datas = this.getFromStorage(task.status)
+        if(datas) {
+            datas.push(task)
+            DataBase.storage.setItem(task.status, JSON.stringify(datas))
         }
-        return this.instance
     }
 
-    getFromStorage(status: STATUS): string | null{
-        return DataBase.storage.getItem(status)
-    }
-
-    addToStorage(task: Task): void {
-        const oldDB = this.getFromStorage(task.status)
-        if(oldDB) {
-            const oldTask = JSON.parse(oldDB) as Task[]
-            oldTask.push(task)
-            DataBase.storage.setItem(task.status, JSON.stringify(oldTask))
+    static removeTask(task: Task){
+        const datas = this.getFromStorage(task.status)
+        if(datas){
+            const taskToRemove = datas.filter(d => d.id === task.id)
+            if(taskToRemove) datas.splice(datas.indexOf(taskToRemove[0]), 1)
         }
     }
 }
