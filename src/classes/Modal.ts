@@ -26,7 +26,7 @@ export class Modal {
     const addButton = this.modalTemplate.querySelector("#add");
     const cancelButton = this.modalTemplate.querySelector("#cancel");
     const closeButton = this.modalTemplate.querySelector("#close");
-    if(this.task.id) addButton.textContent = 'Update'
+    if(this.task.title) addButton.textContent = 'Update'
     addButton.addEventListener("click", () => {
       const submitted = this.submit();
       if (submitted) {
