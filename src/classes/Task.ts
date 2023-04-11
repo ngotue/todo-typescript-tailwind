@@ -8,8 +8,8 @@ export enum STATUS {
 export class Task {
   readonly id: number = Math.floor(Math.random() * 250);
   constructor(
-    private title: string,
-    private desc: string,
+    public title: string,
+    public desc: string,
     public status: STATUS
   ) {}
 }

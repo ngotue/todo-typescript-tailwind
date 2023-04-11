@@ -5,11 +5,17 @@ const modalTemplate = require("../templates/modal.html").default;
 
 export class Modal {
   private modalTemplate: HTMLElement;
+  private title : HTMLInputElement
+  private desc : HTMLTextAreaElement
+  private status: HTMLSelectElement
 
   constructor(private container: string) {
     const modalContainer = document.createElement("div");
     modalContainer.innerHTML = modalTemplate;
     this.modalTemplate = modalContainer;
+    this.title = this.modalTemplate.querySelector("#title") as HTMLInputElement;
+    this.status = this.modalTemplate.querySelector("#status") as HTMLSelectElement;
+    this.desc = this.modalTemplate.querySelector("#description") as HTMLTextAreaElement;
     this.initActionButtons();
   }
 
@@ -20,6 +26,9 @@ export class Modal {
     addButton.addEventListener("click", (e: Event) => {
       const submitted = this.submit();
       if (submitted) {
+        this.title.value = ''
+        this.desc.value = ''
+        this.status.value = STATUS.CONCEPT
         this.hideModal();
       }
     });
@@ -40,7 +49,6 @@ export class Modal {
 
   hideModal() {
     this.modalTemplate.querySelector("#addTaskModal").classList.add("hidden");
-    console.log('rerenderred')
     this.render();
   }
 
@@ -49,14 +57,14 @@ export class Modal {
   }
 
   private submit() {
-    const title = document.querySelector("#title") as HTMLInputElement;
-    const status = document.querySelector("#status") as HTMLSelectElement;
-    const desc = document.querySelector("#description") as HTMLTextAreaElement;
-    if (!title.value || !desc.value) {
+    const title = this.title.value;
+    const status = this.status.value;
+    const desc = this.desc.value;
+    if (!title || !desc) {
       alert("title or description is not defined");
       return false;
     }
-    const task = new Task(title.value, desc.value, status.value as STATUS);
+    const task = new Task(title, desc, status as STATUS);
     DataBase.addToStorage(task);
     return true;
   }
