@@ -1,5 +1,6 @@
 import { STATUS, Task } from "./Task";
 import { DataBase } from "./DataBase";
+import { createElementFromString } from "../utils/functions";
 
 const modalTemplate = require("../templates/modal.html").default;
 
@@ -10,9 +11,7 @@ export class Modal {
   private status: HTMLSelectElement
 
   constructor(private container: string, private task: Task = new Task()) {
-    const modalContainer = document.createElement("div");
-    modalContainer.innerHTML = modalTemplate;
-    this.modalTemplate = modalContainer;
+    this.modalTemplate = createElementFromString(modalTemplate);
     this.title = this.modalTemplate.querySelector("#title") as HTMLInputElement;
     this.status = this.modalTemplate.querySelector("#status") as HTMLSelectElement;
     this.desc = this.modalTemplate.querySelector("#description") as HTMLTextAreaElement;
