@@ -1,4 +1,3 @@
-import {AddTaskForm} from './classes/AddTaskForm'
 import { Modal } from './classes/Modal'
 
 const button = document.querySelector('button')

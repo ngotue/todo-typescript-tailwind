@@ -11,11 +11,13 @@ export class DataBase {
     }
 
     static addToStorage(task: Task) {
-        const datas = this.getFromStorage(task.status)
-        if(datas) {
-            datas.push(task)
-            DataBase.storage.setItem(task.status, JSON.stringify(datas))
-        }
+        let datas : Task[] | null
+        datas = this.getFromStorage(task.status)
+
+        if(!datas) datas = []
+        
+        datas.push(task)
+        DataBase.storage.setItem(task.status, JSON.stringify(datas))
     }
 
     static removeTask(task: Task){
