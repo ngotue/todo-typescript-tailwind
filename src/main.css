@@ -8,6 +8,8 @@
 }
 .action-btn {
   position: absolute;
+  padding: 2px;
+  border-radius: 50%;
 }
 .action-btn.delete {
   line-height: 9.4px;
@@ -15,8 +17,6 @@
   color: white;
   top: 0;
   right: 0;
-  padding: 2px;
-  border-radius: 50%;
 }
 .action-btn.delete span {
   display: block;
@@ -24,3 +24,29 @@
   margin-top: -4px;
 }
 
+button[left] {
+  left: 0;
+  top: 50%;
+  transform: translate(-400%, -200%);
+}
+
+button[left]:before {
+  position: absolute;
+  background-color: aquamarine;
+  content: "\2039";
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+button[right] {
+  right: 0;
+  top: 50%;
+  transform: translate(200%,-200%);
+}
+button[right]:after {
+  position: absolute;
+  background-color: aquamarine;
+  content: "\203A";
+  font-weight: bold;
+  font-size: 1.5rem;
+}

@@ -7,7 +7,6 @@ export class DataBase {
 
     static get(status: STATUS): Task[] | null{
         const datas = DataBase.storage.getItem(status)
-        console.log(datas)
         return datas ? JSON.parse(datas) : null
     }
 
